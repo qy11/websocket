@@ -11,8 +11,17 @@ const app = express(),
 app.use(express.static('public'))
 
 //socket
-var io = socket(server)
+var io = socket(server);
 
 io.on('connection', function (socket) {
-  console.log('连接已建立', socket.id);
+
+  socket.on('chat', function (data) {
+    console.log('chat');
+    io.sockets.emit('chat', data)
+  });
+
+  socket.on('typing', function (data) {
+    console.log('typing', data);
+    socket.broadcast.emit('typing', data)  // 广播
+  })
 })
