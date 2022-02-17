@@ -33,5 +33,5 @@ socket.on('chat', function (data) {
 
 socket.on('typing', function (data) {
   console.log('监听', data);
-  feedbackArea.innerHTML = '<p><em>' + data + ':</em></p>'
+  feedbackArea.innerHTML = '<p><em>' + data + ':正在输入</em></p>'
 })
